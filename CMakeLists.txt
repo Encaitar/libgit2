@@ -299,7 +299,7 @@ ELSE ()
 	ELSEIF (BUILD_SHARED_LIBS)
 		SET(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -fvisibility=hidden -fPIC")
 	ENDIF ()
-	IF (APPLE) # Apple deprecated OpenSSL
+	IF (APPLE AND NOT CMAKE_C_COMPILER MATCHES "icc") # Apple deprecated OpenSSL
 		SET(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -Wno-deprecated-declarations")
 	ENDIF ()
 	IF (PROFILE)
